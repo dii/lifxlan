@@ -2072,13 +2072,31 @@ MSG_IDS = {
     ButtonState: 907,
 }
 
-SERVICE_IDS = {1: "UDP", 2: "reserved", 3: "reserved", 4: "reserved"}
+SERVICE_IDS = {
+    1: "UDP",
+    2: "reserved",
+    3: "reserved",
+    4: "reserved",
+}
 
-STR_MAP = {65535: "On", 0: "Off", None: "Unknown"}
+STR_MAP = {
+    65535: "On",
+    0: "Off",
+    None: "Unknown",
+}
 
-ZONE_MAP = {0: "NO_APPLY", 1: "APPLY", 2: "APPLY_ONLY"}
+ZONE_MAP = {
+    0: "NO_APPLY",
+    1: "APPLY",
+    2: "APPLY_ONLY",
+}
 
-TILE_EFFECT = {0: "OFF", 1: "RESERVED", 2: "MORPH", 3: "FLAME"}
+TILE_EFFECT = {
+    0: "OFF",
+    1: "RESERVED",
+    2: "MORPH",
+    3: "FLAME",
+}
 
 BUTTON_GESTURE = {
     0: "None",
