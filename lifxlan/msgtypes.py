@@ -10,7 +10,6 @@ import bitstring
 
 from .message import BROADCAST_MAC, Message, little_endian
 
-
 ##### DEVICE MESSAGES #####
 
 
@@ -1934,55 +1933,7 @@ class ButtonGet(Message):
         )
 
 
-# class ButtonSet(Message):
-#     def __init__(
-#         self,
-#         target_addr,
-#         source_id,
-#         seq_num,
-#         payload,
-#         ack_requested=False,
-#         response_requested=False,
-#     ):
-#         self.button_index = payload["button_index"]
-#         self.button_count = payload["button_count"]
-#         self.buttons = payload["buttons"]
-#         super(ButtonSet, self).__init__(
-#             MSG_IDS[ButtonSet],
-#             target_addr,
-#             source_id,
-#             seq_num,
-#             ack_requested,
-#             response_requested,
-#         )
-
-#     def get_payload(self):
-#         self.payload_fields.append(("button_index", self.button_index))
-#         self.payload_fields.append(("button_count", self.button_count))
-#         self.payload_fields.append(("buttons", self.buttons))
-#         return super().get_payload()
-
-
 class ButtonState(Message):
-    BUTTON_GESTURE = {
-        0: "None",
-        1: "Press",
-        2: "Hold",
-        3: "Press 2x",
-        4: "Press & Hold",
-        5: "Hold 2x",
-    }
-
-    BUTTON_TARGET = {
-        0: "None",
-        2: "Relays",
-        3: "Device",
-        4: "Location",
-        5: "Group",
-        6: "Scene",
-        7: "Device Relays",
-    }
-
     def __init__(
         self,
         target_addr,
@@ -2118,7 +2069,6 @@ MSG_IDS = {
     SetRPower: 817,
     StateRPower: 818,
     ButtonGet: 905,
-    # ButtonSet: 906,
     ButtonState: 907,
 }
 
@@ -2129,6 +2079,25 @@ STR_MAP = {65535: "On", 0: "Off", None: "Unknown"}
 ZONE_MAP = {0: "NO_APPLY", 1: "APPLY", 2: "APPLY_ONLY"}
 
 TILE_EFFECT = {0: "OFF", 1: "RESERVED", 2: "MORPH", 3: "FLAME"}
+
+BUTTON_GESTURE = {
+    0: "None",
+    1: "Press",
+    2: "Hold",
+    3: "Press 2x",
+    4: "Press & Hold",
+    5: "Hold 2x",
+}
+
+BUTTON_TARGET = {
+    0: "None",
+    2: "Relays",
+    3: "Device",
+    4: "Location",
+    5: "Group",
+    6: "Scene",
+    7: "Device Relays",
+}
 
 
 def str_map(key):
