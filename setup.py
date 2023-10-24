@@ -3,7 +3,7 @@ import re
 from setuptools import setup
 
 with open("lifxlan/__init__.py") as meta_file:
-    metadata = dict(re.findall(r"__([a-z]+)__\s*=\s*'([^']+)'", meta_file.read()))
+    metadata = dict(re.findall(r'__([a-z]+)__\s*=\s*"([^"]+)"', meta_file.read()))
 
 setup(
     name="lifxlan",
