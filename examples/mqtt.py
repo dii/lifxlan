@@ -273,7 +273,7 @@ def _run_handler(args):
         print("Run the wizard")
         return
 
-    client = mqtt.Client()
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2)
     client.username_pw_set(config["mqtt"]["username"], config["mqtt"]["password"])
     client.connect(config["mqtt"]["broker"], config["mqtt"]["port"])
 

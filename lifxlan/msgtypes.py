@@ -1979,31 +1979,35 @@ class ButtonState(Message):
                             bitstring.pack("uint:8", action["target"]["relays_count"])
                         )
                         relays = little_endian(
-                            bitstring.pack("bytes:15", action["target"]["relays"])
+                            bitstring.pack(
+                                "bytes:15", bytes(action["target"]["relays"])
+                            )
                         )
                         target = relays_count + relays
                     case 3:  # Device
                         serial = little_endian(
-                            bitstring.pack("bytes:6", action["target"]["serial"])
+                            bitstring.pack("bytes:6", bytes(action["target"]["serial"]))
                         )
                         reserved = little_endian(
-                            bitstring.pack("bytes:10", action["target"]["reserved"])
+                            bitstring.pack(
+                                "bytes:10", bytes(action["target"]["reserved"])
+                            )
                         )
                         target = serial + reserved
                     case 7:  # Device Relays
                         serial = little_endian(
-                            bitstring.pack("bytes:6", action["target"]["serial"])
+                            bitstring.pack("bytes:6", bytes(action["target"]["serial"]))
                         )
                         relays_count = little_endian(
                             bitstring.pack("uint:8", action["target"]["relays_count"])
                         )
                         relays = little_endian(
-                            bitstring.pack("bytes:9", action["target"]["relays"])
+                            bitstring.pack("bytes:9", bytes(action["target"]["relays"]))
                         )
                         target = serial + relays_count + relays
                     case _:  # Location / Group / Scene / other
                         target = little_endian(
-                            bitstring.pack("bytes:16", action["target"])
+                            bitstring.pack("bytes:16", bytes(action["target"]))
                         )
                 payload += gesture + target_type + target
         return payload
