@@ -52,10 +52,11 @@ class Switch(Device):
                 self.req_with_ack(
                     SetRPower, {"relay_index": relay_index, "level": 65535}
                 )
-            else:
+            elif level in off:
                 self.req_with_ack(SetRPower, {"relay_index": relay_index, "level": 0})
-
-        except WorkflowException:
+            else:
+                raise
+        except WorkflowException as e:
             raise
 
     def get_buttons(self):
